@@ -12,22 +12,6 @@ const ViewAllTheatreMovies = () => {
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
 
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${BASE_URL}/movie/fetch/status-wise?status=Active`, {
-  //       headers: { Authorization: "Bearer " + admin_jwtToken },
-  //     })
-  //     .then((response) => {
-  //       if (response.data) {
-  //         setMovies(response.data.movies);
-  //       }
-  //     })
-  //     .catch(() => {
-  //       alert("Unable to fetch movies. Server error.");
-  //     });
-  // }, []);
-
   useEffect(() => {
     const token = sessionStorage.getItem("admin-jwtToken");
 
