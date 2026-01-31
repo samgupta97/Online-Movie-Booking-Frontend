@@ -1,9 +1,274 @@
+// import { Link, useNavigate } from "react-router-dom";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
+// const AdminHeader = () => {
+//   let navigate = useNavigate();
+
+//   const user = JSON.parse(sessionStorage.getItem("active-admin"));
+//   console.log(user);
+
+//   const adminLogout = () => {
+//     toast.success("logged out!!!", {
+//       position: "top-center",
+//       autoClose: 1000,
+//       hideProgressBar: false,
+//       closeOnClick: true,
+//       pauseOnHover: true,
+//       draggable: true,
+//       progress: undefined,
+//     });
+//     sessionStorage.removeItem("active-admin");
+//     sessionStorage.removeItem("admin-jwtToken");
+
+//     setTimeout(() => {
+//       window.location.reload(true);
+//       navigate("/home");
+//     }, 2000); // Redirect after 3 seconds
+//   };
+//   return (
+//     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+//       <li class="nav-item dropdown">
+//         <a
+//           class="nav-link dropdown-toggle text-color"
+//           href="#"
+//           id="navbarDropdown"
+//           role="button"
+//           data-bs-toggle="dropdown"
+//           aria-expanded="false"
+//         >
+//           <b> Theatres</b>
+//         </a>
+//         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+//           <li class="nav-item">
+//             <Link
+//               to="/theatre/pending/"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color"> Pending</b>
+//             </Link>
+//           </li>
+
+//           <li class="nav-item">
+//             <Link
+//               to="/theatre/approved"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">Approved</b>
+//             </Link>
+//           </li>
+//         </ul>
+//       </li>
+
+//       <li class="nav-item dropdown">
+//         <a
+//           class="nav-link dropdown-toggle text-color"
+//           href="#"
+//           id="navbarDropdown"
+//           role="button"
+//           data-bs-toggle="dropdown"
+//           aria-expanded="false"
+//         >
+//           <b> User</b>
+//         </a>
+//         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+//           <li>
+//             <Link
+//               to="/admin/customer/all"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">View Customers</b>
+//             </Link>
+//           </li>
+
+//           <li class="nav-item">
+//             <Link
+//               to="/admin/theatre/manager/all"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">All Managers</b>
+//             </Link>
+//           </li>
+
+//           <li class="nav-item">
+//             <Link
+//               to="/user/admin/register"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">Register Admin</b>
+//             </Link>
+//           </li>
+//         </ul>
+//       </li>
+
+//       <li class="nav-item dropdown">
+//         <a
+//           class="nav-link dropdown-toggle text-color"
+//           href="#"
+//           id="navbarDropdown"
+//           role="button"
+//           data-bs-toggle="dropdown"
+//           aria-expanded="false"
+//         >
+//           <b> Location</b>
+//         </a>
+//         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+//           <li class="nav-item">
+//             <Link
+//               to="/location/add"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color"> Add Location</b>
+//             </Link>
+//           </li>
+
+//           <li class="nav-item">
+//             <Link
+//               to="/location/view/all"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">All Locations</b>
+//             </Link>
+//           </li>
+//         </ul>
+//       </li>
+
+//       <li class="nav-item dropdown">
+//         <a
+//           class="nav-link dropdown-toggle text-color"
+//           href="#"
+//           id="navbarDropdown"
+//           role="button"
+//           data-bs-toggle="dropdown"
+//           aria-expanded="false"
+//         >
+//           <b> Screens</b>
+//         </a>
+//         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+//           {/* <li class="nav-item">
+//             <Link
+//               to="/category/add"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color"> Add Category</b>
+//             </Link>
+//           </li> */}
+
+//           <li class="nav-item">
+//             <Link
+//               to="/admin/theatre/screen/all"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">All Screens</b>
+//             </Link>
+//           </li>
+//         </ul>
+//       </li>
+
+//       <li class="nav-item dropdown">
+//         <a
+//           class="nav-link dropdown-toggle text-color"
+//           href="#"
+//           id="navbarDropdown"
+//           role="button"
+//           data-bs-toggle="dropdown"
+//           aria-expanded="false"
+//         >
+//           <b> Movies</b>
+//         </a>
+//         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+//           <li class="nav-item">
+//             <Link
+//               to="/admin/theatre/movies/all"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">All Movies</b>
+//             </Link>
+//           </li>
+//         </ul>
+//       </li>
+
+//       <li class="nav-item dropdown">
+//         <a
+//           class="nav-link dropdown-toggle text-color"
+//           href="#"
+//           id="navbarDropdown"
+//           role="button"
+//           data-bs-toggle="dropdown"
+//           aria-expanded="false"
+//         >
+//           <b> Shows</b>
+//         </a>
+//         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+//           <li class="nav-item">
+//             <Link
+//               to="/admin/theatre/show/all"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">All Shows</b>
+//             </Link>
+//           </li>
+//         </ul>
+//       </li>
+
+//       <li class="nav-item dropdown">
+//         <a
+//           class="nav-link dropdown-toggle text-color"
+//           href="#"
+//           id="navbarDropdown"
+//           role="button"
+//           data-bs-toggle="dropdown"
+//           aria-expanded="false"
+//         >
+//           <b> Bookings</b>
+//         </a>
+//         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+//           <li class="nav-item">
+//             <Link
+//               to="/admin/theatre/show/bookings"
+//               class="nav-link active"
+//               aria-current="page"
+//             >
+//               <b className="text-color">All Bookings</b>
+//             </Link>
+//           </li>
+//         </ul>
+//       </li>
+
+//       <li className="nav-item">
+//         <button
+//           onClick={adminLogout}
+//           className="btn btn-outline-danger ms-2 fw-bold"
+//           style={{ borderRadius: "30px" }}
+//         >
+//           Logout
+//         </button>
+//         <ToastContainer />
+//       </li>
+//     </ul>
+//   );
+// };
+
+// export default AdminHeader;
+
+
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AdminHeader = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const user = JSON.parse(sessionStorage.getItem("active-admin"));
   console.log(user);
@@ -12,240 +277,136 @@ const AdminHeader = () => {
     toast.success("logged out!!!", {
       position: "top-center",
       autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
     });
+
     sessionStorage.removeItem("active-admin");
     sessionStorage.removeItem("admin-jwtToken");
 
     setTimeout(() => {
       window.location.reload(true);
       navigate("/home");
-    }, 2000); // Redirect after 3 seconds
+    }, 2000);
   };
+
+  const DropdownToggle = ({ children }) => (
+    <button
+      type="button"
+      className="nav-link dropdown-toggle text-color bg-transparent border-0"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <b>{children}</b>
+    </button>
+  );
+
   return (
-    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <b> Theatres</b>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li class="nav-item">
-            <Link
-              to="/theatre/pending/"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color"> Pending</b>
-            </Link>
-          </li>
+    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
 
-          <li class="nav-item">
-            <Link
-              to="/theatre/approved"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">Approved</b>
-            </Link>
-          </li>
-        </ul>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <b> User</b>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      {/* THEATRES */}
+      <li className="nav-item dropdown">
+        <DropdownToggle>Theatres</DropdownToggle>
+        <ul className="dropdown-menu">
           <li>
-            <Link
-              to="/admin/customer/all"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">View Customers</b>
+            <Link to="/theatre/pending/" className="dropdown-item">
+              Pending
             </Link>
           </li>
-
-          <li class="nav-item">
-            <Link
-              to="/admin/theatre/manager/all"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">All Managers</b>
-            </Link>
-          </li>
-
-          <li class="nav-item">
-            <Link
-              to="/user/admin/register"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">Register Admin</b>
+          <li>
+            <Link to="/theatre/approved" className="dropdown-item">
+              Approved
             </Link>
           </li>
         </ul>
       </li>
 
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <b> Location</b>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li class="nav-item">
-            <Link
-              to="/location/add"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color"> Add Location</b>
+      {/* USERS */}
+      <li className="nav-item dropdown">
+        <DropdownToggle>User</DropdownToggle>
+        <ul className="dropdown-menu">
+          <li>
+            <Link to="/admin/customer/all" className="dropdown-item">
+              View Customers
             </Link>
           </li>
-
-          <li class="nav-item">
-            <Link
-              to="/location/view/all"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">All Locations</b>
+          <li>
+            <Link to="/admin/theatre/manager/all" className="dropdown-item">
+              All Managers
+            </Link>
+          </li>
+          <li>
+            <Link to="/user/admin/register" className="dropdown-item">
+              Register Admin
             </Link>
           </li>
         </ul>
       </li>
 
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <b> Screens</b>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {/* <li class="nav-item">
-            <Link
-              to="/category/add"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color"> Add Category</b>
+      {/* LOCATION */}
+      <li className="nav-item dropdown">
+        <DropdownToggle>Location</DropdownToggle>
+        <ul className="dropdown-menu">
+          <li>
+            <Link to="/location/add" className="dropdown-item">
+              Add Location
             </Link>
-          </li> */}
-
-          <li class="nav-item">
-            <Link
-              to="/admin/theatre/screen/all"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">All Screens</b>
+          </li>
+          <li>
+            <Link to="/location/view/all" className="dropdown-item">
+              All Locations
             </Link>
           </li>
         </ul>
       </li>
 
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <b> Movies</b>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li class="nav-item">
-            <Link
-              to="/admin/theatre/movies/all"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">All Movies</b>
+      {/* SCREENS */}
+      <li className="nav-item dropdown">
+        <DropdownToggle>Screens</DropdownToggle>
+        <ul className="dropdown-menu">
+          <li>
+            <Link to="/admin/theatre/screen/all" className="dropdown-item">
+              All Screens
             </Link>
           </li>
         </ul>
       </li>
 
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <b> Shows</b>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li class="nav-item">
-            <Link
-              to="/admin/theatre/show/all"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">All Shows</b>
+      {/* MOVIES */}
+      <li className="nav-item dropdown">
+        <DropdownToggle>Movies</DropdownToggle>
+        <ul className="dropdown-menu">
+          <li>
+            <Link to="/admin/theatre/movies/all" className="dropdown-item">
+              All Movies
             </Link>
           </li>
         </ul>
       </li>
 
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <b> Bookings</b>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li class="nav-item">
-            <Link
-              to="/admin/theatre/show/bookings"
-              class="nav-link active"
-              aria-current="page"
-            >
-              <b className="text-color">All Bookings</b>
+      {/* SHOWS */}
+      <li className="nav-item dropdown">
+        <DropdownToggle>Shows</DropdownToggle>
+        <ul className="dropdown-menu">
+          <li>
+            <Link to="/admin/theatre/show/all" className="dropdown-item">
+              All Shows
             </Link>
           </li>
         </ul>
       </li>
 
+      {/* BOOKINGS */}
+      <li className="nav-item dropdown">
+        <DropdownToggle>Bookings</DropdownToggle>
+        <ul className="dropdown-menu">
+          <li>
+            <Link to="/admin/theatre/show/bookings" className="dropdown-item">
+              All Bookings
+            </Link>
+          </li>
+        </ul>
+      </li>
+
+      {/* LOGOUT */}
       <li className="nav-item">
         <button
           onClick={adminLogout}

@@ -1,31 +1,105 @@
+// import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+// import { useParams } from "react-router-dom";
+// import star from "../images/star.png";
+// import BASE_URL from "../api/api";
+
+// const GetMovieReviews = ({ movie }) => {
+//   console.log("movie object");
+//   console.log(JSON.stringify(movie));
+
+//   const [reviews, setReviews] = useState([]);
+//   const [rating, setRating] = useState("0.0");
+
+//   const retrieveAllReviews = async () => {
+//     const response = await axios.get(
+//       `${BASE_URL}/movie/review/fetch?movieId=` + movie?.id
+//     );
+//     return response.data;
+//   };
+
+//   useEffect(() => {
+//     const getAllReviews = async () => {
+//       const allReviews = await retrieveAllReviews();
+
+//       if (allReviews) {
+//         setReviews(allReviews.reviews);
+//         setRating(allReviews.averageRating);
+//       }
+//     };
+
+//     getAllReviews();
+//   }, []);
+
+//   return (
+//     <div
+//       class="list-group form-card border-color"
+//       style={{
+//         height: "28rem",
+//       }}
+//     >
+//       <div class="list-group-item list-group-item-action bg-color custom-bg-text">
+//         <b>
+//           Movie Rating: {rating}
+//           <img
+//             src={star}
+//             width="20"
+//             height="20"
+//             className="d-inline-block align-top"
+//             alt=""
+//           />
+//         </b>
+//       </div>
+//       <div
+//         style={{
+//           overflowY: "auto",
+//         }}
+//       >
+//         {reviews.map((review) => {
+//           return (
+//             <div class="list-group-item list-group-item-action ">
+//               <b className="">{review.user.firstName + " "}</b>
+//               <b className="">{review.star + " /5 "}</b>
+//               <img
+//                 src={star}
+//                 width="20"
+//                 height="20"
+//                 className="d-inline-block align-top"
+//                 alt=""
+//               />
+//               <br />
+//               <p>{review.review}</p>
+//             </div>
+//           );
+//         })}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default GetMovieReviews;
+
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 import star from "../images/star.png";
 import BASE_URL from "../api/api";
 
 const GetMovieReviews = ({ movie }) => {
-  console.log("movie object");
-  console.log(JSON.stringify(movie));
-
   const [reviews, setReviews] = useState([]);
   const [rating, setRating] = useState("0.0");
 
-  const retrieveAllReviews = async () => {
-    const response = await axios.get(
-      `${BASE_URL}/movie/review/fetch?movieId=` + movie?.id
-    );
-    return response.data;
-  };
-
   useEffect(() => {
     const getAllReviews = async () => {
-      const allReviews = await retrieveAllReviews();
+      if (!movie?.id) return;
 
-      if (allReviews) {
-        setReviews(allReviews.reviews);
-        setRating(allReviews.averageRating);
+      const response = await axios.get(
+        `${BASE_URL}/movie/review/fetch?movieId=${movie.id}`
+      );
+
+      if (response.data) {
+        setReviews(response.data.reviews);
+        setRating(response.data.averageRating);
       }
     };
 
@@ -34,45 +108,41 @@ const GetMovieReviews = ({ movie }) => {
 
   return (
     <div
-      class="list-group form-card border-color"
-      style={{
-        height: "28rem",
-      }}
+      className="list-group form-card border-color"
+      style={{ height: "28rem" }}
     >
-      <div class="list-group-item list-group-item-action bg-color custom-bg-text">
+      <div className="list-group-item list-group-item-action bg-color custom-bg-text">
         <b>
           Movie Rating: {rating}
           <img
             src={star}
             width="20"
             height="20"
-            className="d-inline-block align-top"
-            alt=""
+            className="d-inline-block align-top ms-1"
+            alt="star"
           />
         </b>
       </div>
-      <div
-        style={{
-          overflowY: "auto",
-        }}
-      >
-        {reviews.map((review) => {
-          return (
-            <div class="list-group-item list-group-item-action ">
-              <b className="">{review.user.firstName + " "}</b>
-              <b className="">{review.star + " /5 "}</b>
-              <img
-                src={star}
-                width="20"
-                height="20"
-                className="d-inline-block align-top"
-                alt=""
-              />
-              <br />
-              <p>{review.review}</p>
-            </div>
-          );
-        })}
+
+      <div style={{ overflowY: "auto" }}>
+        {reviews.map((review, index) => (
+          <div
+            key={index}
+            className="list-group-item list-group-item-action"
+          >
+            <b>{review.user.firstName} </b>
+            <b>{review.star} /5 </b>
+            <img
+              src={star}
+              width="20"
+              height="20"
+              className="d-inline-block align-top ms-1"
+              alt="star"
+            />
+            <br />
+            <p>{review.review}</p>
+          </div>
+        ))}
       </div>
     </div>
   );

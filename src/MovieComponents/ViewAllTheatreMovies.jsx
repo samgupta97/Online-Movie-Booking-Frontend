@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import React from "react";
-import { useNavigate } from "react-router-dom";
 import { FaEye, FaTrash } from "react-icons/fa";
 import { Button, Modal } from "react-bootstrap";
 import BASE_URL from "../api/api";
@@ -13,12 +11,29 @@ const ViewAllTheatreMovies = () => {
 
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
-  const navigate = useNavigate();
+
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`${BASE_URL}/movie/fetch/status-wise?status=Active`, {
+  //       headers: { Authorization: "Bearer " + admin_jwtToken },
+  //     })
+  //     .then((response) => {
+  //       if (response.data) {
+  //         setMovies(response.data.movies);
+  //       }
+  //     })
+  //     .catch(() => {
+  //       alert("Unable to fetch movies. Server error.");
+  //     });
+  // }, []);
 
   useEffect(() => {
+    const token = sessionStorage.getItem("admin-jwtToken");
+
     axios
       .get(`${BASE_URL}/movie/fetch/status-wise?status=Active`, {
-        headers: { Authorization: "Bearer " + admin_jwtToken },
+        headers: { Authorization: "Bearer " + token },
       })
       .then((response) => {
         if (response.data) {
@@ -29,6 +44,7 @@ const ViewAllTheatreMovies = () => {
         alert("Unable to fetch movies. Server error.");
       });
   }, []);
+
 
   const viewMovieDetail = (movie) => {
     setSelectedMovie(movie);

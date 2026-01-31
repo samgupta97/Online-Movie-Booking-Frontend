@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
 import BASE_URL from "../api/api";
 
@@ -10,162 +7,90 @@ const ViewAllLocations = () => {
   const [allLocations, setAllLocations] = useState([]);
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
-  let navigate = useNavigate();
-
   useEffect(() => {
-    const getAllLocation = async () => {
-      const allLocations = await retrieveAllLocation();
-      if (allLocations) {
-        setAllLocations(allLocations.locations);
-      }
-    };
-
-    getAllLocation();
-  }, []);
-
-  const retrieveAllLocation = async () => {
-    const response = await axios.get(
-      `${BASE_URL}/location/fetch/all`
-    );
-    console.log(response.data);
-    return response.data;
-  };
-
-  const deleteLocation = (locationId, e) => {
-    fetch(
-      `${BASE_URL}location/delete?locationId=` + locationId,
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + admin_jwtToken,
-        },
-      }
-    )
-      .then((result) => {
-        result.json().then((res) => {
-          if (res.success) {
-            toast.success(res.responseMessage, {
-              position: "top-center",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-
-            setTimeout(() => {
-              window.location.reload(true);
-            }, 1000); // Redirect after 3 seconds
-          } else if (!res.success) {
-            toast.error(res.responseMessage, {
-              position: "top-center",
-              autoClose: 1000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-            setTimeout(() => {
-              window.location.reload(true);
-            }, 1000); // Redirect after 3 seconds
-          }
-        });
+    axios
+      .get(`${BASE_URL}/location/fetch/all`)
+      .then((response) => {
+        setAllLocations(response.data.locations);
       })
       .catch((error) => {
         console.error(error);
-        toast.error("It seems server is down", {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        setTimeout(() => {
-          window.location.reload(true);
-        }, 1000); // Redirect after 3 seconds
+        alert("Failed to fetch locations");
+      });
+  }, []);
+
+  const deleteLocation = (locationId) => {
+    axios
+      .delete(`${BASE_URL}/location/delete`, {
+        params: { locationId },
+        headers: {
+          Authorization: "Bearer " + admin_jwtToken,
+        },
+      })
+      .then((response) => {
+        if (response.data.success) {
+          alert(response.data.responseMessage);
+
+          // remove deleted location from UI (NO reload)
+          setAllLocations((prev) =>
+            prev.filter((location) => location.id !== locationId)
+          );
+        } else {
+          alert(response.data.responseMessage);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("It seems the server is down");
       });
   };
-
-  // const updateLocation = (location) => {
-  //   navigate("/admin/location/update", { state: location });
-  // };
 
   return (
     <div className="mt-3">
       <div
         className="card form-card ms-2 me-2 mb-5 shadow-lg"
-        style={{
-          height: "45rem",
-        }}
+        style={{ height: "45rem" }}
       >
         <div
           className="card-header custom-bg-text text-center bg-color"
-          style={{
-            borderRadius: "1em",
-            height: "50px",
-          }}
+          style={{ borderRadius: "1em", height: "50px" }}
         >
           <h5 className="h5">All Locations</h5>
         </div>
-        <div
-          className="card-body"
-          style={{
-            overflowY: "auto",
-          }}
-        >
+
+        <div className="card-body" style={{ overflowY: "auto" }}>
           <div className="table-responsive">
             <table className="table table-hover text-center">
               <thead className="table-bordered border-color bg-color custom-bg-text">
                 <tr>
-                  <th scope="col">Downtown</th>
-                  <th scope="col">City</th>
-                  <th scope="col">Latitude</th>
-                  <th scope="col">Longitude</th>
-                  <th scope="col">Action</th>
+                  <th>Downtown</th>
+                  <th>City</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                  <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
-                {allLocations.map((location) => {
-                  return (
-                    <tr>
-                      <td>
-                        <b>{location.downtown}</b>
-                      </td>
-                      <td>
-                        <b>{location.city}</b>
-                      </td>
-                      <td>
-                        <b>{location.latitude}</b>
-                      </td>
-                      <td>
-                        <b>{location.longitude}</b>
-                      </td>
-                      <td>
-                        {/* <button
-                          onClick={() => updateLocation(location)}
-                          className="btn btn-sm bg-color custom-bg-text ms-2"
-                        >
-                          Update
-                        </button> */}
 
-                        <button
-                          onClick={() => deleteLocation(location.id)}
-                          className="btn btn-lg bg-color custom-bg-text ms-2"
-                          title="Delete"
-                        >
-                          <FaTrash />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
+              <tbody>
+                {allLocations.map((location) => (
+                  <tr key={location.id}>
+                    <td><b>{location.downtown}</b></td>
+                    <td><b>{location.city}</b></td>
+                    <td><b>{location.latitude}</b></td>
+                    <td><b>{location.longitude}</b></td>
+                    <td>
+                      <button
+                        onClick={() => deleteLocation(location.id)}
+                        className="btn btn-lg bg-color custom-bg-text ms-2"
+                        title="Delete"
+                      >
+                        <FaTrash />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
+
             </table>
           </div>
         </div>
