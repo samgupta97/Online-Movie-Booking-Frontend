@@ -1,3 +1,3 @@
-const BASE_URL = "http://localhost:8080/api";
+const BASE_URL = "online-movie-booking-backend-production.up.railway.app";
 
 export default BASE_URL;
