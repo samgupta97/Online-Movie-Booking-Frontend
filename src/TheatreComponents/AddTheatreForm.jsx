@@ -47,7 +47,7 @@ const AddTheatreForm = () => {
     e.preventDefault();
 
     if (!theatre.name || !theatre.address || !theatre.locationId) {
-      alert("Missing input fields!");
+      alert("Missing input fields! ");
       return;
     }
 
@@ -77,7 +77,7 @@ const AddTheatreForm = () => {
         const response = resp.data;
 
         if (response.success) {
-          alert("Theatre added successfully!");
+          alert("Theatre added successfully! ");
 
           theatreManager.theatre = response.theatres[0];
 
