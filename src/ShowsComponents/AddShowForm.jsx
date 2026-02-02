@@ -30,7 +30,7 @@ const AddShowForm = () => {
       )
       .then((res) => setMovies(res.data.movies))
       .catch(() => alert("Failed to load movies."));
-  }, []);
+  }, [theatreManager?.theatre?.id, theatre_jwtToken]);
 
   const [show, setShow] = useState({
     showDate: "",

@@ -28,16 +28,15 @@ const TheatreHeader = () => {
   return (
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
+        <button
+          class="nav-link dropdown-toggle text-color border-0 bg-transparent"
+          type="button"
           id="navbarDropdown"
-          role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           <b> Screens</b>
-        </a>
+        </button>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li class="nav-item">
             <Link
@@ -62,16 +61,15 @@ const TheatreHeader = () => {
       </li>
 
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
+        <button
+          class="nav-link dropdown-toggle text-color border-0 bg-transparent"
+          type="button"
           id="navbarDropdown"
-          role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           <b> Movies</b>
-        </a>
+        </button>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li class="nav-item">
             <Link
@@ -97,15 +95,14 @@ const TheatreHeader = () => {
 
       <li class="nav-item dropdown">
         <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
+          class="nav-link dropdown-toggle text-color border-0 bg-transparent"
+          type="button"
           id="navbarDropdown"
-          role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           <b> Shows</b>
-        </a>
+        </button>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li class="nav-item">
             <Link
@@ -130,16 +127,15 @@ const TheatreHeader = () => {
       </li>
 
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
+        <button
+          class="nav-link dropdown-toggle text-color border-0 bg-transparent"
+          type="button"
           id="navbarDropdown"
-          role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           <b> Bookings</b>
-        </a>
+        </button>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li class="nav-item">
             <Link
@@ -154,16 +150,15 @@ const TheatreHeader = () => {
       </li>
 
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
+        <button
+          class="nav-link dropdown-toggle text-color border-0 bg-transparent"
+          type="button"
           id="navbarDropdown"
-          role="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           <b> Theatre</b>
-        </a>
+        </button>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           {(() => {
             if (!user?.theatre) {

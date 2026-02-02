@@ -9,10 +9,7 @@ import BASE_URL from "../api/api";
 const ViewAllTheatreManagers = () => {
   const [managers, setManagers] = useState([]);
 
-  const admin = JSON.parse(sessionStorage.getItem("active-admin"));
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
-
-  let navigate = useNavigate();
 
   useEffect(() => {
     const getAllUsers = async () => {
@@ -23,7 +20,7 @@ const ViewAllTheatreManagers = () => {
     };
 
     getAllUsers();
-  }, []);
+  }, [admin_jwtToken]);
 
   const retrieveAllUser = async () => {
     const response = await axios.get(

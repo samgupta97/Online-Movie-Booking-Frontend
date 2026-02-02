@@ -29,16 +29,15 @@ const AdminHeader = () => {
   return (
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
+        <button
+          class="nav-link dropdown-toggle text-color border-0 bg-transparent"
           id="navbarDropdown"
-          role="button"
+          type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           <b> Theatres</b>
-        </a>
+        </button>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li class="nav-item">
             <Link
@@ -175,16 +174,15 @@ const AdminHeader = () => {
       </li>
 
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle text-color"
-          href="#"
-          id="navbarDropdown"
-          role="button"
+        <button
+          class="nav-link dropdown-toggle text-color border-0 bg-transparent"
+          id="navbarDropdown2"
+          type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
           <b> Movies</b>
-        </a>
+        </button>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li class="nav-item">
             <Link

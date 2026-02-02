@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
 import BASE_URL from "../api/api";
@@ -9,8 +8,6 @@ import BASE_URL from "../api/api";
 const ViewAllLocations = () => {
   const [allLocations, setAllLocations] = useState([]);
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
-
-  let navigate = useNavigate();
 
   useEffect(() => {
     const getAllLocation = async () => {

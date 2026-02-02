@@ -34,7 +34,7 @@ const ViewTheatreScreens = () => {
         console.error(err);
         alert("Failed to fetch screens");
       });
-  }, []);
+  }, [theatreManager?.theatre?.id, theatre_jwtToken]);
 
   const viewScreenDetail = (screen) => {
     setSelectedScreen(screen);

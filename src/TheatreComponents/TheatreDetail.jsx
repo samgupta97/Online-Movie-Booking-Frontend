@@ -23,7 +23,7 @@ const TheatreDetail = () => {
         setTheatre(res.data.theatres[0]);
       })
       .catch(() => alert("Failed to load theatre details"));
-  }, []);
+  }, [theatreId, theatre_jwtToken]);
 
   if (!theatre) return <h3>Loading...</h3>;
 

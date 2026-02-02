@@ -13,8 +13,6 @@ const ViewAllTheatreMovies = () => {
 
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     axios
       .get(`${BASE_URL}/movie/fetch/status-wise?status=Active`, {
@@ -28,7 +26,7 @@ const ViewAllTheatreMovies = () => {
       .catch(() => {
         alert("Unable to fetch movies. Server error.");
       });
-  }, []);
+  }, [admin_jwtToken]);
 
   const viewMovieDetail = (movie) => {
     setSelectedMovie(movie);

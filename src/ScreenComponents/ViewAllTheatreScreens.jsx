@@ -11,14 +11,11 @@ const ViewAllTheatreScreens = () => {
   const [selectedScreen, setSelectedScreen] = useState({ name: "", screenSeats: [] });
   const [showModal, setShowModal] = useState(false);
 
-  const admin = JSON.parse(sessionStorage.getItem("active-admin"));
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     retrieveScreen();
-  }, []);
+  }, [admin_jwtToken]);
 
   const retrieveScreen = () => {
     axios

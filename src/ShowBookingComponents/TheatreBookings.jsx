@@ -41,7 +41,7 @@ const TheatreBookings = () => {
         console.error(err);
         alert("Failed to fetch bookings");
       });
-  }, []);
+  }, [theatreManager?.theatre?.id, theatre_jwtToken]);
 
   return (
     <div className="mt-3">

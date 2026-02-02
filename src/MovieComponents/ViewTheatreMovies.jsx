@@ -25,7 +25,7 @@ const ViewTheatreMovies = () => {
       .catch(() => {
         alert("Unable to fetch movies. Server error.");
       });
-  }, []);
+  }, [theatreManager?.theatre?.id, theatre_jwtToken]);
 
   const deleteMovie = (movieId) => {
     axios

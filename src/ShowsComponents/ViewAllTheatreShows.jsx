@@ -30,7 +30,7 @@ const ViewAllTheatreShows = () => {
         if (res.data) setShows(res.data.shows);
       })
       .catch(() => alert("Unable to fetch shows. Server error."));
-  }, []);
+  }, [admin_jwtToken]);
 
   const viewShowDetail = (show) => {
     navigate("/theatre/show/detail", { state: show });

@@ -22,7 +22,7 @@ const  TheatreShows = () => {
         }
       })
       .catch(() => console.error("Error fetching theatre details"));
-  }, []);
+  }, [theatreId]);
 
   // Fetch upcoming theatre shows
   useEffect(() => {

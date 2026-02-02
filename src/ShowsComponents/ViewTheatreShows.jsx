@@ -29,7 +29,7 @@ const ViewTheatreShows = () => {
       )
       .then((res) => setShows(res.data.shows))
       .catch(() => alert("Unable to fetch shows."));
-  }, []);
+  }, [theatreManager?.theatre?.id, theatre_jwtToken]);
 
 
   const viewShowDetail = (showId) => {

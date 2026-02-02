@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import BASE_URL from "../api/api";
 const TheatreWallet = () => {
-  const navigate = useNavigate();
-
   const theatre = JSON.parse(sessionStorage.getItem("active-theatre"));
   const theatre_jwtToken = sessionStorage.getItem("theatre-jwtToken");
 
@@ -13,7 +10,7 @@ const TheatreWallet = () => {
 
   useEffect(() => {
     retrieveWalletDetail();
-  }, []);
+  }, [theatre.id]);
 
   const retrieveWalletDetail = () => {
     axios

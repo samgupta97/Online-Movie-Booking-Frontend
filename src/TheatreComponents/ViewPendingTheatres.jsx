@@ -23,7 +23,7 @@ const ViewPendingTheatres = () => {
         console.log(err);
         alert("Failed to load theatres");
       });
-  }, []);
+  }, [admin_jwtToken]);
 
   // UPDATE THEATRE STATUS
   const updateTheatreStatus = (theatreId, status) => {

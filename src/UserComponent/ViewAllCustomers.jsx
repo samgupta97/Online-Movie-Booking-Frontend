@@ -18,7 +18,7 @@ const ViewAllCustomers = () => {
     };
 
     getAllUsers();
-  }, []);
+  }, [admin_jwtToken]);
 
   const retrieveAllUser = async () => {
     const response = await axios.get(

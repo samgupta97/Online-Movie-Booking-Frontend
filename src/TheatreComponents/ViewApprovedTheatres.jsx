@@ -23,7 +23,7 @@ const ViewApprovedTheatres = () => {
         setTheatres(res.data.theatres || []);
       })
       .catch(() => alert("Failed to load theatres"));
-  }, []);
+  }, [admin_jwtToken]);
 
   const deleteTheatre = (theatreId) => {
     axios

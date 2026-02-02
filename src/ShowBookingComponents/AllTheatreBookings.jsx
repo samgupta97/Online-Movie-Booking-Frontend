@@ -6,7 +6,6 @@ import BASE_URL from "../api/api";
 const AllTheatreBookings = () => {
   const [bookings, setBookings] = useState([]);
 
-  const adminManager = JSON.parse(sessionStorage.getItem("active-admin"));
   const admin_jwtToken = sessionStorage.getItem("admin-jwtToken");
 
   function formatShowDateTime(showDate, startTime, endTime) {
@@ -30,7 +29,7 @@ const AllTheatreBookings = () => {
     };
 
     getShowBookings();
-  }, []);
+  }, [admin_jwtToken]);
 
   const retrieveBookings = async () => {
     const response = await axios.get(

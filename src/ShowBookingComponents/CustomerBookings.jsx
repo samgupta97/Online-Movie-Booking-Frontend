@@ -33,7 +33,7 @@ const CustomerBookings = () => {
     };
 
     getShowBookings();
-  }, []);
+  }, [customer?.id, customer_jwtToken]);
 
   const retrieveBookings = async () => {
     const response = await axios.get(

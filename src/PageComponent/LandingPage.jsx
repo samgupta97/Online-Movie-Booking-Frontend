@@ -1,20 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import pizzalanding1 from "../images/pizzalanding1.png";
-import restaurant_eating from "../images/restaurant_eating.jpg";
-import restaurant_eating2 from "../images/restaurant_eating2.jpg";
 import pizza from "../images/Pizza.png";
 import burger from "../images/Burger.png";
 import drinks from "../images/Drinks.png";
 import combo from "../images/Combo.png";
 import chicken from "../images/Chicken.png";
 import puff from "../images/Puff.png";
-import delivery1 from "../images/delivery1.jpeg";
-import delivery2 from "../images/delivery2.jpg";
-import cinema from "../images/cinema.png";
 import cinema2 from "../images/cinema2.png";
-import popcorn from "../images/popcorn.png";
-import coke from "../images/coke.png";
 import movie1 from "../images/movie1.png";
 import movie2 from "../images/movie2.png";
 
