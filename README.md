@@ -73,3 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Backend Repo link
 
 https://github.com/samgupta47/online--movie-booking-backend
+
+Live Link
+
+https://online-movie-booking-frontend.vercel.app/
