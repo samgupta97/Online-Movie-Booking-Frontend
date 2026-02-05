@@ -94,7 +94,7 @@ const TheatreHeader = () => {
       </li>
 
       <li class="nav-item dropdown">
-        <a
+        <button
           class="nav-link dropdown-toggle text-color border-0 bg-transparent"
           type="button"
           id="navbarDropdown"
